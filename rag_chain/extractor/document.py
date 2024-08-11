@@ -1,5 +1,5 @@
 import os
-from loader.document import DocumentLoader
+from rag_chain.loader.document import DocumentLoader
 from langchain_text_splitters import __all__ as text_splitters
 
 class DocumentExtractor:
