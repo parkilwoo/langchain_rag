@@ -36,13 +36,13 @@ from langchain.memory import ConversationSummaryMemory
 #     return "\n\n".join(doc.page_content for doc in docs)
 
 
-# # # 단계 8: 체인 생성(Create Chain)
-# # rag_chain = (
-# #     {"context": retriever | format_docs, "question": RunnablePassthrough()}
-# #     | prompt
-# #     | openai_connector.get_connector()
-# #     | StrOutputParser()
-# # )
+# # 단계 8: 체인 생성(Create Chain)
+# rag_chain = (
+#     {"context": retriever | format_docs, "question": RunnablePassthrough()}
+#     | prompt
+#     | openai_connector.get_connector()
+#     | StrOutputParser()
+# )
 
 
 # # question = "신용정보법 제22조의 9에 대해서 알려줘."

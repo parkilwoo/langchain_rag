@@ -17,3 +17,9 @@ class BaseConnector(ABC):
         Returns:
             bool: _description_
         """
+
+    @abstractmethod
+    def get_connector(self):
+        """_summary_
+        Get Connector
+        """
