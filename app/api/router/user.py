@@ -1,8 +1,8 @@
 
 from fastapi import APIRouter
 
-from app.domain.user.services import UserService
-from app.api.model.user import UserLoginRequest
+from domain.user.services import UserService
+from api.model.user import UserLoginRequest
 
 router = APIRouter()
 

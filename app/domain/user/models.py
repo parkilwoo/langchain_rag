@@ -1,5 +1,5 @@
 import base64
-from ...core.security import SecurityConfig
+from core.security import SecurityConfig
 
 class AccessToken:
     __seperator = ":"

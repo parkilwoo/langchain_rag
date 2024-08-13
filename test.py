@@ -61,7 +61,7 @@ from langchain.memory import ConversationSummaryMemory
 # resp_3 = conversation.invoke("내 정보를 알려줘.")
 # print(resp_3)
 
-from app.infrastructure.connector.open_ai import OpenAiConnector
+from infrastructure.connector.open_ai import OpenAiConnector
 async def test():
     conn = OpenAiConnector("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", "gpt-4o-2024-08-06")
     # conn = OpenAiConnector("adsad", "gpt-3.5-turbo-instruct")

@@ -5,7 +5,7 @@ from datetime import datetime
 class BaseResponse(BaseModel):
     request_time: datetime
     response_time: datetime
-    elapsed_time: datetime
+    elapsed_time: float
     
 class SuccessResponse(BaseResponse):
     result: Dict
@@ -14,5 +14,5 @@ class Error(BaseModel):
     error_code: str
     error_msg: str    
 
-class ErrorReponse(BaseResponse):
+class ErrorResponse(BaseResponse):
     error: Error

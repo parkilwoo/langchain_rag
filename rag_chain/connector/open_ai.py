@@ -15,7 +15,6 @@ class OpeanAiConnector(BaseConnector):
     
     def __init__(self, open_ai_key: str, model_name: str) -> None:
         self._valide_model(model_name)
-        # self.hash_value = self._generate_hash(key=open_ai_key, model=model_name)
         self.connector = ChatOpenAI(api_key=open_ai_key, model=model_name)
     
     def _valide_model(self, model_name: str) -> None:

@@ -3,9 +3,8 @@ from typing import Optional
 from langchain_core.output_parsers import StrOutputParser
 from langchain.memory import ConversationSummaryMemory
 from langchain.chains.conversation.base import ConversationChain
-from sentence_transformers import SentenceTransformer
 
-from app.infrastructure.connector.base import BaseConnector
+from infrastructure.connector.base import BaseConnector
 
 class RedisSavingConversationChain(ConversationChain):
     def __init__(self, connector: BaseConnector, conversation_memory: ConversationSummaryMemory, redis_key: str):
@@ -28,18 +27,15 @@ class RedisSavingConversationChain(ConversationChain):
         return response
 
 class QueryInput:
-    __emdding_model = SentenceTransformer('jhgan/ko-sbert-nli', device='cpu')
-
     def __init__(self, input: str) -> None:
-        self.input = input
+        self.translate_input = self._translate(input)
     
-    def __str__(self) -> str:
-        # TODO Input값을 영어로 번역하는 로직 구현
-        pass
-    
-    def get_vector(self):
-        return self.__emdding_model.encode(self.input)
+    def _translate(self, text: str) -> str:
+        # TODO 번역 로직 구현
+        return text
 
+    def get_input(self) -> str:
+        return self.translate_input
 class Query:
 
     def __init__(self, input: QueryInput, connector: BaseConnector, conversation_memory: Optional[ConversationSummaryMemory]) -> None:

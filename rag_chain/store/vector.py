@@ -9,8 +9,7 @@ class VectorStore:
         model_kwargs={'device':'cpu', 'clean_up_tokenization_spaces': False},
         encode_kwargs={'normalize_embeddings':True},
     )
-    _vector_store = None
-    
+
     @classmethod
     def _initialize_vector_store(cls, documents: List[Document]) -> None:
         cls._vector_store = FAISS.from_documents(documents, cls._embedding_model)

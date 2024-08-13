@@ -1,5 +1,5 @@
-from app.infrastructure.connector.open_ai import OpenAiConnector
-from app.domain.user.models import AccessToken
+from infrastructure.connector.open_ai import OpenAiConnector
+from domain.user.models import AccessToken
 
 class UserService:
     _user_repository = None

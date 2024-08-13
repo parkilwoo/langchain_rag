@@ -1,7 +1,7 @@
 from langchain_openai import ChatOpenAI
 from enum import Enum
 
-from app.infrastructure.connector.base import BaseConnector
+from infrastructure.connector.base import BaseConnector
 
 class OpenAiModel(Enum):
     GPT_4O = ("gpt-4o", "gpt-4o-2024-05-13", "gpt-4o-2024-08-06")

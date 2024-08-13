@@ -1,7 +1,7 @@
 import aioredis
-from app.domain.query.models import QueryInput
-from app.domain.user.models import AccessToken
-from app.infrastructure.connector.open_ai import OpenAiConnector
+from domain.query.models import QueryInput
+from domain.user.models import AccessToken
+from infrastructure.connector.open_ai import OpenAiConnector
 
 class QueryService:
     _query_repository = None
@@ -12,5 +12,8 @@ class QueryService:
         api_key, use_model_name = AccessToken.decrypt(access_token)
         connector = OpenAiConnector(api_key, use_model_name)
 
-        # 2. redis에서 이미 질문에 대한 답변이 있는지 확인
-        input_query_vector = QueryInput(input_query).get_vector()
+        # 2. input값을 영어로 번역
+        translated_query = QueryInput(input_query).get_input()
+
+        # 3. vector값 구하기
+        

@@ -2,17 +2,13 @@ import sys
 from loguru import logger
 
 logger.add(
-    ...,
+    sink=sys.stdout,
     level="INFO",
     format="{time:YYYY-MM-DD at HH:mm:ss} | {level} | {message}",
     colorize=False,
     backtrace=True,  # Fully descriptive exceptions
     diagnose=True,  # Fully descriptive exceptions
     enqueue=True,  # Asynchronous, Thread-safe, Multiprocess-safe
-    rotation="10MB",
-    retention="90 days",
-    compression="zip",
-    encoding="utf-8",
 )
 
 

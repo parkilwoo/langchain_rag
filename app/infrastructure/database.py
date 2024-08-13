@@ -25,4 +25,3 @@ class VectorRedisClient(BaseRedisClient):
             cls._ttl = ttl
         return cls._instance
     
-    
