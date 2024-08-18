@@ -11,7 +11,7 @@ class SuccessResponse(BaseResponse):
     result: Dict
     
 class Error(BaseModel):
-    error_code: str
+    error_code: int
     error_msg: str    
 
 class ErrorResponse(BaseResponse):

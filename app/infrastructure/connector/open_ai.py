@@ -1,6 +1,7 @@
 from langchain_openai import ChatOpenAI
 from enum import Enum
 
+from core.exception_handler import CustomException
 from infrastructure.connector.base import BaseConnector
 
 class OpenAiModel(Enum):
@@ -26,14 +27,8 @@ class OpenAiConnector(BaseConnector):
         try:
             await self.connector.ainvoke(self._test_message)
         except Exception as e:
-            print(f"connection fail :: {e.message}")
-            status_code, message = e.status_code, e.body.get('message') or e.message
-            raise e
+            raise CustomException(e.status_code, e.body.get('message') or e.message)
         
     def get_connector(self):
         return self.connector
     
-    
-if __name__ == '__main__':
-    conn = OpenAiConnector("adsdasddasds", "gpt-4o")
-    conn.test_connection()

@@ -8,25 +8,25 @@ from api.model.base import ErrorResponse, Error
 from core.custom_logger import logger
 from shared.utils import Utils
 
-class CoreCustomException(Exception):
+class CustomException(Exception):
     def __init__(self, error_code: int, error_msg: str = None):
         self.error_code = error_code
         self.error_msg = error_msg
     
 
 
-def core_exception_handler(request: Request, cce: CoreCustomException) -> JSONResponse:
+def core_exception_handler(request: Request, ce: CustomException) -> JSONResponse:
     response_time = datetime.now()
     traceback.print_exc(limit=-1)
     logger.error(
         'ERROR_CODE::{} ERROR_MESSAGE::{}',
-        cce.error_code,
-        cce.error_msg
+        ce.error_code,
+        ce.error_msg
     )
 
     error_obj = Error(
-        code=cce.error_code,
-        message=cce.error_msg
+        code=ce.error_code,
+        message=ce.error_msg
     )
 
     error_resp_obj = ErrorResponse(
@@ -37,6 +37,6 @@ def core_exception_handler(request: Request, cce: CoreCustomException) -> JSONRe
     )    
 
     return JSONResponse(
-        status_code=cce.error_code,
+        status_code=ce.error_code,
         content=jsonable_encoder(error_resp_obj)
     )
